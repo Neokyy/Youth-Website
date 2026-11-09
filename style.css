@@ -3,17 +3,134 @@
     --text: #f2f2f2;
     --muted: #a0a0a8;
     --accent: #4c8dff;
+    --surface: #1a1a1f;
+    --font-title: "Jomhuria", serif;
+    --font-para: "Inter", sans-serif;
 }
 
 body{
     margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-para);
 }
 
-#home, #aboutus{
-    height: 100vh;
+h1{
+    font-family: var(--font-title);
+    letter-spacing: 2px;
+    font-size: clamp(2rem, 6vw, 7rem);
+    margin: 0;
+    line-height: 0.7;
+}
+
+p{
+    font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+    line-height: 1.6;
+}
+
+.youth{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.youth ul{
+    list-style: none;
+    padding: 20px 25px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto 0;
+    width: fit-content;
+    background-color: var(--surface);
+    border-radius: 999px;
+
+}
+
+.youth a{
+    text-decoration: none;
+    color: var(--text);
+    padding: 7px 15px;
+    border-radius: 999px;
+}
+
+.youth a:hover{
+    background-color: var(--muted);
 }
 
 .youth-photos img{
     max-width: 100%;
     height: auto;
+}
+
+#home{
+    height: 100vh;
+}
+
+#home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: drift 5s ease-in-out infinite alternate;
+    background-image: radial-gradient(ellipse closest-side at 30% 40%, rgba(0, 81, 255, 0.836), transparent 150%);
+}
+
+#home p{
+    max-width: 55ch;
+    margin: 0.5rem 0 0;
+}
+@keyframes drift{
+    from{ background-position: 0% 50%; }
+    to{ background-position: 100% 50%; }
+}
+
+@keyframes rise{
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#home h1, #home p{
+    animation: rise 3s ease-out both;
+}
+
+#home p{
+    animation-delay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce){
+    #home h1, #home p{
+        animation: none;
+    }
+}
+
+#whatwedo{
+    padding-left: 8vw;
+    padding-right: 8vw;
+}
+
+#whatwedo ul{
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+#whatwedo li{
+    background-color: var(--surface);
+    padding: 1.5rem;
+    border-radius: 16px;
 }
