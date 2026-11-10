@@ -89,6 +89,32 @@ p{
     max-width: 300px;
     backdrop-filter: blur(20px);
     margin-right: 300px;
+    display: block;
+}
+
+.verse-card span{
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+}
+
+.verse-card blockquote{
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.3rem;
+    line-height: 1.4;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.verse-card cite{
+    color: var(--muted);
+    font-size: medium;
+    font-style: italic;
 }
 
 #home p{
