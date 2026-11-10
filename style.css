@@ -71,15 +71,24 @@ p{
 
 #home{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding-left: 8vw;
     padding-right: 8vw;
     background-size: 200% 100%;
     background-repeat: no-repeat;
     animation: drift 5s ease-in-out infinite alternate;
     background-image: radial-gradient(ellipse closest-side at 30% 40%, rgba(0, 81, 255, 0.836), transparent 150%);
+}
+
+.verse-card{
+    background-color: rgb(26 26 31 / 40%);
+    padding: 1.5rem;
+    border-radius: 16px;
+    max-width: 300px;
+    backdrop-filter: blur(20px);
+    margin-right: 300px;
 }
 
 #home p{
@@ -117,8 +126,10 @@ p{
 }
 
 #whatwedo{
-    padding-left: 8vw;
-    padding-right: 8vw;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    padding-left: 30vw;
+    padding-right: 30vw;
 }
 
 #whatwedo ul{
@@ -133,4 +144,15 @@ p{
     background-color: var(--surface);
     padding: 1.5rem;
     border-radius: 16px;
+}
+
+.reveal{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 3s;
+}
+
+.visible{
+    opacity: 1;
+    transform: translateY(0);
 }
