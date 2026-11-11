@@ -183,3 +183,29 @@ p{
     opacity: 1;
     transform: translateY(0);
 }
+
+#members{
+    padding-top: 8rem;
+    padding-left: 8vw;
+    padding-right: 8vw;
+}
+
+.team-photos figure{
+    margin: 0;
+}
+
+.team-photos{
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+}
+
+.team-photos img{
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
