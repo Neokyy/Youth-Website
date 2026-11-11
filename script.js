@@ -29,9 +29,6 @@ if(versesDaily && refDaily){
 
 
 
-
-
-
 function showCards(entries){
     entries.forEach(entry => {
         if (entry.isIntersecting === true){
@@ -50,5 +47,7 @@ function showCards(entries){
 weDo.forEach(card => {
     observer.observe(card)
 })
+
+
 
 

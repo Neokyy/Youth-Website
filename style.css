@@ -90,6 +90,7 @@ p{
     backdrop-filter: blur(20px);
     margin-right: 300px;
     display: block;
+    animation: rise 3s ease-out;
 }
 
 .verse-card span{
