@@ -190,6 +190,15 @@ p{
     padding-right: 8vw;
 }
 
+#members h1{
+    text-transform: uppercase;
+}
+
+#members p{
+    max-width: 55ch;
+    margin-top: 0;
+}
+
 .team-photos figure{
     margin: 0;
 }
@@ -208,4 +217,30 @@ p{
     object-fit: cover;
     border-radius: 16px;
     display: block;
+}
+
+.team-photos figcaption{
+    text-align: center;
+    padding-top: 7px;
+}
+
+.member-name{
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.member-role{
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--accent); 
+    margin-top: 3px;  
+}
+
+footer{
+    padding: 50px;
+    text-align: center;
+    color: var(--muted);
 }
