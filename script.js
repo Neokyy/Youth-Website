@@ -48,6 +48,15 @@ weDo.forEach(card => {
     observer.observe(card)
 })
 
+const enterScreen = document.querySelector("#enter")
 
+if (enterScreen) {
+    document.body.classList.add("locked")
+
+    enterScreen.addEventListener("click", () => {
+        enterScreen.classList.add("hide")
+        document.body.classList.remove("locked")
+    })
+}
 
 

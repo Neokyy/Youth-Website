@@ -79,8 +79,15 @@ p{
     background-size: 200% 100%;
     background-repeat: no-repeat;
     animation: drift 5s ease-in-out infinite alternate;
-    background-image: radial-gradient(ellipse closest-side at 30% 40%, rgba(0, 81, 255, 0.836), transparent 150%);
+    background-image:
+        url("Images/6th-day.png"),
+        radial-gradient(ellipse closest-side at 30% 40%, rgb(3 72 219 / 0.836), transparent 150%);
+    background-size: contain, 200% 100%;
+    background-position: left center, 0% 50%;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, scroll;
 }
+
 
 .verse-card{
     background-color: rgb(26 26 31 / 40%);
@@ -123,8 +130,8 @@ p{
     margin: 0.5rem 0 0;
 }
 @keyframes drift{
-    from{ background-position: 0% 50%; }
-    to{ background-position: 100% 50%; }
+    from{ background-position: left center 0% 50%; }
+    to{ background-position: left center, 100% 50%; }
 }
 
 @keyframes rise{
@@ -217,6 +224,7 @@ p{
     object-fit: cover;
     border-radius: 16px;
     display: block;
+    width: 800px;
 }
 
 .team-photos figcaption{
@@ -243,4 +251,80 @@ footer{
     padding: 50px;
     text-align: center;
     color: var(--muted);
+}
+
+#enter{
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+    background-color: var(--bg);
+    cursor: pointer;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#enter.hide{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+body.locked{
+    overflow: hidden;
+}
+
+#enter img{
+    width: clamp(200px, 32vw, 420px);
+    height: auto;
+    filter: brightness(0) invert(1);
+    animation: pulse 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse{
+    from{ transform: scale(1); }
+    to{ transform: scale(1.06); }
+}
+
+#enter span{
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+#clickenter{
+    font-family: ui-monospace, "Courier New", monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    background: transparent;
+    border: none;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    text-shadow: 1px 0 rgb(255 0 80 / 60%), -1px 0 rgb(0 220 255 / 60%);
+    animation: blink 2.4s ease-in-out infinite;
+    transition: color 0.3s;
+}
+
+#clickenter:hover{
+    color: var(--accent);
+}
+
+@keyframes blink{
+    0%, 100%{ opacity: 1; }
+    50%{ opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    #enter, #enter img, #clickenter{
+        transition: none;
+        animation: none;
+    }
 }
