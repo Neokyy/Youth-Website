@@ -49,13 +49,28 @@ weDo.forEach(card => {
 })
 
 const enterScreen = document.querySelector("#enter")
+const song = document.querySelector("#song")
+const musicButton = document.querySelector("#music")
+
+if(song && musicButton){
+    musicButton.addEventListener("click", () => {
+        song.muted = !song.muted
+        if (song.muted) {
+            musicbutton.setAttribute("aria-label", "Unmute music")
+        } else {
+            musicbutton.setAttribute("aria-label", "Mute music")
+        }
+    })
+}
 
 if (enterScreen) {
     document.body.classList.add("locked")
+   
 
     enterScreen.addEventListener("click", () => {
         enterScreen.classList.add("hide")
         document.body.classList.remove("locked")
+        song.play().catch(error => console.log(error))
     })
 }
 

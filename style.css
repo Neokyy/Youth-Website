@@ -328,3 +328,41 @@ body.locked{
         animation: none;
     }
 }
+
+#musicbar{
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    background-color: var(--surface);
+    border: 1px solid var(--muted);
+    border-radius: 4px 6px;
+    overflow: hidden;
+    width: 14rem;
+}
+
+#music{
+    border: none;
+    cursor: pointer;
+    background-color: rgb(26 26 31 / 40%);
+    padding: 1rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+}
+
+#music svg{
+    fill: currentColor;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+#time{
+    font-family: ui-monospace, monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    padding: 0.1rem;
+    font-variant-numeric: tabular-nums
+}
