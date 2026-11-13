@@ -51,27 +51,78 @@ weDo.forEach(card => {
 const enterScreen = document.querySelector("#enter")
 const song = document.querySelector("#song")
 const musicButton = document.querySelector("#music")
+const time = document.querySelector("#time")
 
-if(song && musicButton){
+
+if (song && musicButton && time) {
+    function updateMuteLabel() {
+        if (song.muted) {
+            musicButton.setAttribute("aria-label", "Unmute music")
+        } else {
+            musicButton.setAttribute("aria-label", "Mute music")
+        }
+    }
+
     musicButton.addEventListener("click", () => {
         song.muted = !song.muted
-        if (song.muted) {
-            musicbutton.setAttribute("aria-label", "Unmute music")
-        } else {
-            musicbutton.setAttribute("aria-label", "Mute music")
-        }
+        updateMuteLabel()
     })
+
+    song.addEventListener("timeupdate", () => {
+        const minutes = Math.floor(song.currentTime / 60)
+        const seconds = Math.floor(song.currentTime % 60)
+
+        time.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+    })
+
+    window.addEventListener("pagehide", () => {
+        sessionStorage.setItem("musicTime", song.currentTime)
+        sessionStorage.setItem("musicPlaying", !song.paused)
+        sessionStorage.setItem("musicMuted", song.muted)
+    })
+
+    const savedTime = sessionStorage.getItem("musicTime")
+
+    if (savedTime !== null) {
+        const wasPlaying = sessionStorage.getItem("musicPlaying") === "true"
+        const wasMuted = sessionStorage.getItem("musicMuted") === "true"
+
+        song.muted = wasMuted
+        updateMuteLabel()
+
+        if (song.readyState >= 1) {
+            song.currentTime = Number(savedTime)
+        } else {
+            song.addEventListener("loadedmetadata", () => {
+                song.currentTime = Number(savedTime)
+            }, { once: true })
+        }
+
+        if (wasPlaying) {
+            song.play().catch(error => {
+                console.log(error)
+                document.addEventListener("click", () => {
+                    song.play()
+                }, { once: true })
+            })
+        }
+    }
 }
 
-if (enterScreen) {
-    document.body.classList.add("locked")
-   
 
-    enterScreen.addEventListener("click", () => {
-        enterScreen.classList.add("hide")
-        document.body.classList.remove("locked")
-        song.play().catch(error => console.log(error))
-    })
+if (enterScreen) {
+    if (sessionStorage.getItem("entered")) {
+        enterScreen.remove()
+    } else {
+        document.body.classList.add("locked")
+
+        enterScreen.addEventListener("click", () => {
+            sessionStorage.setItem("entered", "yes")
+            enterScreen.classList.add("hide")
+            document.body.classList.remove("locked")
+            song.play().catch(error => console.log(error))
+        })
+    }
 }
 
 
